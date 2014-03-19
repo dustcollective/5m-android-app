@@ -1,0 +1,104 @@
+<resources>
+
+    <style name="list">
+        <item name="android:cacheColorHint">#00000000</item>
+        <item name="android:divider">@color/listDivider</item>
+        <item name="android:dividerHeight">1px</item>
+    </style>
+
+    <style name="listItemRoot">
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+    <style name="listItemHeadline">
+        <item name="android:textColor">@color/listItemText</item>
+        <item name="android:maxLines">3</item>
+        <item name="android:ellipsize">marquee</item>
+    </style>
+    <style name="listItemDate">
+        <item name="android:textColor">@color/listItemText</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="listItemButton">
+        <item name="android:background">@color/listItemButton</item>
+    </style>
+    <style name="listItemImage">
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+    <style name="listItemBottomLabel">
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:background">@color/listItemBottomLabelBg</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">40dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+    </style>
+    <style name="listItemBottomLabelHeadline">
+        <item name="android:textColor">@color/listItemBottomLabelText</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:layout_marginRight">20dp</item>
+    </style>
+    <style name="listItemBottomLabelDate">
+        <item name="android:textColor">@color/listItemBottomLabelText</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="listItemBottomLabelButton">
+        <item name="android:background">@color/listItemBottomLabelText</item>
+    </style>
+    <style name="listItemAdImage">
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+    </style>
+
+
+    <style name="info">
+        <item name="android:padding">10dp</item>
+        <item name="android:background">@color/infoTextBg</item>
+    </style>
+
+    <style name="detailRoot">
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="detailTitle">
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+    <style name="detailBody">
+        <item name="android:padding">20dp</item>
+    </style>
+
+    <style name="drawerRootScroller">
+        <item name="android:background">@color/drawerBg</item>
+    </style>
+    <style name="drawerRoot">
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="drawerItemRoot">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">20dp</item>
+        <item name="android:paddingBottom">20dp</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+    <style name="drawerItemText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">10dp</item>
+    </style>
+    <style name="drawerItemIcon">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">15dp</item>
+    </style>
+    <style name="drawerDivider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:background">@color/drawerDivider</item>
+    </style>
+
+</resources>

@@ -1,0 +1,8 @@
+<resources>
+
+    <dimen name="navigation_drawer_width">188dp</dimen>
+
+    <dimen name="listItemHeight">75dp</dimen>
+    <dimen name="listImageWidth">100dp</dimen>
+
+</resources>

@@ -1,0 +1,12 @@
+<resources>
+
+    <color name="listItemBottomLabelBg">#aa017caf</color>
+    <color name="listItemBottomLabelText">#ffffff</color>
+    <color name="listItemText">#939393</color>
+    <color name="listItemButton">#00adef</color>
+    <color name="listDivider">#939393</color>
+    <color name="drawerBg">#e6e7e8</color>
+    <color name="drawerDivider">#aaaaaa</color>
+    <color name="infoTextBg">#cccccc</color>
+
+</resources>

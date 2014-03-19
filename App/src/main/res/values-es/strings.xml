@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- TODO translate to spain -->
+
+    <string name="app_name">Avicola</string>
+    <string name="hello_world">Hello world!</string>
+
+    <!-- Errors -->
+    <string name="err_fetch_data">Could not get new data, please try again later.</string>
+
+    <!-- Menu -->
+    <string name="action_settings">Settings</string>
+    <string name="action_favorites">Favorites</string>
+    <string name="action_search">Search</string>
+
+</resources>

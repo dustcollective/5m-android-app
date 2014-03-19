@@ -1,0 +1,39 @@
+//gradlew :_avicola:packageRelease
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.9.+'
+    }
+}
+apply plugin: 'android-library'
+
+repositories {
+    mavenCentral()
+}
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "19.0.1"
+
+    defaultConfig {
+        minSdkVersion 9
+        targetSdkVersion 19
+    }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+    }
+}
+
+dependencies {
+    compile project(":libraries:UtilLib")
+    compile 'com.android.support:support-v4:+@jar'
+    compile 'com.android.support:appcompat-v7:+'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.3.0-rc1'
+    compile 'com.fasterxml.jackson.core:jackson-core:2.3.0-rc1'
+    compile 'com.fasterxml.jackson.core:jackson-annotations:2.3.0-rc1'
+}

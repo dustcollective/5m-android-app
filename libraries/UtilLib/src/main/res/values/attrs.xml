@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomTypeFaceTextView">
+        <attr name="customFont" format="string"/>
+        <attr name="letterSpacing" format="float"/>
+        <attr name="textAllCapsLegacy" format="boolean"/>
+    </declare-styleable>
+    <declare-styleable name="CenterMaxImageView">
+        <attr name="marginLandscapeRight" format="dimension"/>
+        <attr name="widthInPercents" format="float"/>
+    </declare-styleable>
+</resources>

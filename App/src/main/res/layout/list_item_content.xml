@@ -1,0 +1,60 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    style="@style/listItemRoot">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/listItemHeight" >
+
+        <com.hanacek.android.utilLib.ui.view.PresetSizeImageView
+            android:layout_width="@dimen/listImageWidth"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:id="@+id/image"
+            style="@style/listItemImage"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/headline"
+            android:layout_toRightOf="@id/image"
+            style="@style/listItemHeadline"
+            android:layout_marginRight="60dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/date"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@id/image"
+            style="@style/listItemDate"
+            android:layout_marginRight="60dp"
+            />
+
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:id="@+id/button"
+            android:layout_alignParentRight="true"
+            android:text=">"
+            android:gravity="center"
+            android:textSize="30dp"
+            style="@style/listItemDate"
+            />
+
+        <!-- Final height is set in adapter holder. -->
+        <ImageView
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            style="@style/listItemButton"
+            android:id="@+id/button_image"
+            android:layout_toLeftOf="@id/button"
+            />
+
+    </RelativeLayout>
+
+</RelativeLayout>
