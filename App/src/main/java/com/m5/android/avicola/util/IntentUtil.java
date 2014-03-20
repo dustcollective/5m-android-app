@@ -7,6 +7,7 @@ import android.net.Uri;
 
 import com.m5.android.avicola.DetailActivity;
 import com.m5.android.avicola.SettingsActivity;
+import com.m5.android.avicola.WebActivity;
 import com.m5.android.avicola.app.Constants;
 import com.m5.android.avicola.model.Content;
 
@@ -19,6 +20,12 @@ public class IntentUtil {
     public static void startDetailActivity(Context context, Content item) {
         final Intent intent = new Intent(context, DetailActivity.class);
         intent.putExtra(Constants.EXTRAS_CONTENT, item.toBundle());
+        context.startActivity(intent);
+    }
+
+    public static void startWebActivity(Context context, String url) {
+        final Intent intent = new Intent(context, WebActivity.class);
+        intent.putExtra(Constants.EXTRAS_URL, url);
         context.startActivity(intent);
     }
 

@@ -23,7 +23,7 @@ import android.view.ViewGroup;
  */
 public class NavigationDrawerFragment extends Fragment {
 
-    enum DrawerItem {FAVORITES, SETTINGS}
+    enum DrawerItem {FAVORITES, SETTINGS, HOME, APPS, HELP}
 
     /**
      * Callbacks interface that all activities using this fragment must implement.
@@ -82,6 +82,9 @@ public class NavigationDrawerFragment extends Fragment {
 
         root.findViewById(R.id.favorites).setOnClickListener(new DrawerOnClickListener(DrawerItem.FAVORITES));
         root.findViewById(R.id.settings).setOnClickListener(new DrawerOnClickListener(DrawerItem.SETTINGS));
+        root.findViewById(R.id.home).setOnClickListener(new DrawerOnClickListener(DrawerItem.HOME));
+        root.findViewById(R.id.apps).setOnClickListener(new DrawerOnClickListener(DrawerItem.APPS));
+        root.findViewById(R.id.help).setOnClickListener(new DrawerOnClickListener(DrawerItem.HELP));
 
         return root;
     }

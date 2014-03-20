@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.m5.android.avicola.adapters.MainAdapter;
@@ -31,6 +32,7 @@ public class ListFragment extends Fragment {
 
     private TextView info;
     private ListFragmentInterface activityInterface;
+    private ProgressBar progress;
 
     public ListFragment() {
     }
@@ -69,6 +71,7 @@ public class ListFragment extends Fragment {
         });
 
         info = (TextView) rootView.findViewById(R.id.info);
+        progress = (ProgressBar) rootView.findViewById(R.id.progress);
         return rootView;
     }
 
@@ -79,6 +82,7 @@ public class ListFragment extends Fragment {
             @Override
             public void run() {
                 info.setVisibility(View.GONE);
+                progress.setVisibility(View.GONE);
                 adapter.setItems(type, territory, search, content, advertWrapper, new MainAdapter.OnNoItemsListener() {
                     @Override
                     public void onNoItems() {
@@ -89,7 +93,14 @@ public class ListFragment extends Fragment {
         });
     }
 
+    /**
+     * Not filtered data.
+     *
+     * @param content
+     */
     public void showData(List<Content> content) {
+        info.setVisibility(View.GONE);
+        progress.setVisibility(View.GONE);
         adapter.setItems(content, new MainAdapter.OnNoItemsListener() {
             @Override
             public void onNoItems() {

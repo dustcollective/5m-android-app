@@ -1,5 +1,7 @@
 package com.m5.android.avicola;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
@@ -27,6 +29,7 @@ import com.m5.android.avicola.model.Advert;
 import com.m5.android.avicola.model.Content;
 import com.m5.android.avicola.model.Feed;
 import com.m5.android.avicola.ui.view.InterstitialView;
+import com.m5.android.avicola.util.Cfg;
 import com.m5.android.avicola.util.IntentUtil;
 
 import java.util.List;
@@ -62,6 +65,7 @@ public class MainActivity extends ActionBarActivity implements ListFragment.List
     private int detailInterstitialsShown;
 
     private boolean isFavoritesShown;
+    private AlertDialog helpDialog;
 
     private NavigationDrawerFragment mNavigationDrawerFragment;
     private DrawerLayout drawerLayout;
@@ -239,6 +243,26 @@ public class MainActivity extends ActionBarActivity implements ListFragment.List
             case SETTINGS:
                 IntentUtil.startSettingsForResult(this, REQUEST_CODE_SETTINGS);
                 break;
+            case HOME:
+
+                break;
+            case APPS:
+                IntentUtil.startWebActivity(this, Cfg.URL_APPS);
+                break;
+            case HELP:
+                if (helpDialog == null) {
+                    final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    builder.setPositiveButton(R.string.help_text_dismiss_button, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    builder.setMessage(R.string.help_text);
+                    helpDialog = builder.create();
+                }
+                helpDialog.show();
+                break;
         }
     }
 
@@ -255,6 +279,14 @@ public class MainActivity extends ActionBarActivity implements ListFragment.List
         }
         else {
             super.onBackPressed();
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (helpDialog != null) {
+            helpDialog.dismiss();
         }
     }
 

@@ -110,6 +110,11 @@
             android:screenOrientation="portrait"
             android:label="@string/app_name"/>
 
+        <activity
+            android:name="com.m5.android.avicola.WebActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name"/>
+
         <!-- db -->
         <provider
             android:name="com.benchmark.fivem.db.DbProvider"

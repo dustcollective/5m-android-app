@@ -8,6 +8,8 @@
 
     <!-- Info -->
     <string name="info_no_items">No items found.</string>
+    <string name="help_text">Great help.</string>
+    <string name="help_text_dismiss_button">OK</string>
 
     <!-- Errors -->
     <string name="err_fetch_data">Could not get new data, please try again later.</string>
@@ -17,6 +19,9 @@
     <string name="action_favorites">Favorites</string>
     <string name="action_search">Search</string>
     <string name="action_share">Share</string>
+    <string name="action_home">Home</string>
+    <string name="action_apps">Apps</string>
+    <string name="action_help">Help</string>
 
     <!-- Tabs -->
     <string name="tab_all">All</string>

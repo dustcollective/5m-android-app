@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.hanacek.android.utilLib.tasks.AbstractAsyncTask;
 import com.hanacek.android.utilLib.ui.view.PresetSizeImageView;
+import com.hanacek.android.utilLib.util.Log;
 import com.m5.android.avicola.app.AppContext;
 import com.m5.android.avicola.app.Constants;
 import com.m5.android.avicola.app.UiComponentContext;
@@ -37,7 +38,7 @@ public class DetailActivity extends ActionBarActivity {
         ((TextView)findViewById(R.id.body)).setText(Html.fromHtml(item.body));
         imageView = ((PresetSizeImageView)findViewById(R.id.image));
         imageView.presetDimensions(AppContext.getDisplayWidth(), (int)(Cfg.IMAGE_HEIGHT_RATIO*AppContext.getDisplayWidth()));
-        imageView.setBackgroundColor(android.R.color.transparent);
+        imageView.setBackgroundColor(getResources().getColor(android.R.color.transparent));
         showData();
 
         uiComponentContext = new UiComponentContext(this);
@@ -63,7 +64,12 @@ public class DetailActivity extends ActionBarActivity {
     }
 
     private void showStandard() {
-        AppContext.imageCache().displayImage(item.getImageUrl(), imageView);
+        if (item.getImageUrl() == null) {
+            //TODO whatever is needed.
+        }
+        else {
+            AppContext.imageCache().displayImage(item.getImageUrl(), imageView);
+        }
         ((TextView)findViewById(R.id.date)).setText(item.getFormattedDate());
     }
 
@@ -99,7 +105,12 @@ public class DetailActivity extends ActionBarActivity {
                     }
                     Toast.makeText(DetailActivity.this, messageResId, Toast.LENGTH_LONG).show();
                 }
-            }.setShowProgressBar(uiComponentContext).execute();
+
+                @Override
+                public void onFailed(FailHolder failHolder, Content content) {
+                    Log.error("Could not add/remove from/to favorites.");
+                }
+            }.setShowProgressBar(uiComponentContext).setIsNullResponseSuccess().execute();
 
             return true;
         }

@@ -12,6 +12,29 @@
         >
 
         <LinearLayout
+            android:id="@+id/home"
+            style="@style/drawerItemRoot"
+            android:visibility="gone"
+            >
+
+            <ImageView
+                android:src="@drawable/ic_home"
+                style="@style/drawerItemIcon"
+                />
+
+            <TextView
+                android:text="@string/action_home"
+                style="@style/drawerItemText"
+                />
+
+        </LinearLayout>
+
+        <ImageView
+            android:visibility="gone"
+            style="@style/drawerDivider"
+            />
+
+        <LinearLayout
             android:id="@+id/favorites"
             style="@style/drawerItemRoot"
             >
@@ -33,6 +56,27 @@
             />
 
         <LinearLayout
+            android:id="@+id/apps"
+            style="@style/drawerItemRoot"
+            >
+
+            <ImageView
+                android:src="@drawable/ic_apps"
+                style="@style/drawerItemIcon"
+                />
+
+            <TextView
+                android:text="@string/action_apps"
+                style="@style/drawerItemText"
+                />
+
+        </LinearLayout>
+
+        <ImageView
+            style="@style/drawerDivider"
+            />
+
+        <LinearLayout
             android:id="@+id/settings"
             style="@style/drawerItemRoot"
             >
@@ -44,6 +88,27 @@
 
             <TextView
                 android:text="@string/action_settings"
+                style="@style/drawerItemText"
+                />
+
+        </LinearLayout>
+
+        <ImageView
+            style="@style/drawerDivider"
+            />
+
+        <LinearLayout
+            android:id="@+id/help"
+            style="@style/drawerItemRoot"
+            >
+
+            <ImageView
+                android:src="@drawable/ic_help"
+                style="@style/drawerItemIcon"
+                />
+
+            <TextView
+                android:text="@string/action_help"
                 style="@style/drawerItemText"
                 />
 

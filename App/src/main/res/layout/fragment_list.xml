@@ -20,4 +20,11 @@
         style="@style/info"
         />
 
+    <ProgressBar
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:id="@+id/progress"
+        android:layout_centerInParent="true"
+        />
+
 </RelativeLayout>
