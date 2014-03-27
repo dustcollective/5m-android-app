@@ -259,6 +259,7 @@ public class MainActivity extends ActionBarActivity implements ListFragment.List
                         }
                     });
                     builder.setMessage(R.string.help_text);
+                    builder.setTitle(R.string.help_text_headline);
                     helpDialog = builder.create();
                 }
                 helpDialog.show();

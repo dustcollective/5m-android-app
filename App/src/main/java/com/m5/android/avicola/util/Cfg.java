@@ -7,5 +7,5 @@ public class Cfg {
 
     public static final double IMAGE_HEIGHT_RATIO = 0.75357;
 
-    public static final String URL_APPS = "http://www.seznam.cz";
+    public static final String URL_APPS = "http://app.5mpublishing.com/apps.php";
 }

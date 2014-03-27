@@ -8,7 +8,8 @@
 
     <!-- Info -->
     <string name="info_no_items">No items found.</string>
-    <string name="help_text">Great help.</string>
+    <string name="help_text_headline">Tip:</string>
+    <string name="help_text">Welcome to The Poultry Site App.  The latest poultry news at the tip of your finger.</string>
     <string name="help_text_dismiss_button">OK</string>
 
     <!-- Errors -->

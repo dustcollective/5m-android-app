@@ -74,16 +74,37 @@ public class DetailActivity extends ActionBarActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(final Menu menu) {
         getMenuInflater().inflate(R.menu.detail, menu);
         MenuItem menuItem = menu.findItem(R.id.action_share);
         shareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(menuItem);
         doShare();
+
+        new AbstractAsyncTask<Content>() {
+            @Override
+            protected Content extendedDoInBackground() {
+                return AppContext.favoriteDao().find(DetailActivity.this.item.id);
+            }
+
+            @Override
+            public void onSuccess(Content content) {
+                final MenuItem menuItem = menu.findItem(R.id.action_favorites);
+                if (menuItem != null) {
+                    if (content == null) {
+                        menuItem.setIcon(R.drawable.ic_action_favorite);
+                    }
+                    else {
+                        menuItem.setIcon(R.drawable.ic_action_favorite_selected);
+                    }
+                }
+            }
+        }.setIsNullResponseSuccess().execute();
+
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(final MenuItem item) {
         int itemId = item.getItemId();
         if (itemId == R.id.action_favorites) {
             new AbstractAsyncTask<Content>() {
@@ -98,10 +119,16 @@ public class DetailActivity extends ActionBarActivity {
                     if (content == null) {
                         AppContext.favoriteDao().insert(DetailActivity.this.item);
                         messageResId = R.string.fav_added;
+                        if (item != null) {
+                            item.setIcon(R.drawable.ic_action_favorite_selected);
+                        }
                     }
                     else {
                         AppContext.favoriteDao().delete(DetailActivity.this.item.id);
                         messageResId = R.string.fav_removed;
+                        if (item != null) {
+                            item.setIcon(R.drawable.ic_action_favorite);
+                        }
                     }
                     Toast.makeText(DetailActivity.this, messageResId, Toast.LENGTH_LONG).show();
                 }
