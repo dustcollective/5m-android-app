@@ -1,5 +1,6 @@
 package com.m5.android.avicola;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBarActivity;
@@ -17,6 +18,7 @@ import com.m5.android.avicola.app.AppContext;
 import com.m5.android.avicola.app.Constants;
 import com.m5.android.avicola.app.UiComponentContext;
 import com.m5.android.avicola.model.Content;
+import com.m5.android.avicola.tracking.GoogleAnalytics;
 import com.m5.android.avicola.util.Cfg;
 import com.m5.android.avicola.util.IntentUtil;
 
@@ -46,6 +48,12 @@ public class DetailActivity extends ActionBarActivity {
 
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         doShare();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        AppContext.ga().sendView(GoogleAnalytics.ScreenName.DETAIL);
     }
 
     private void showData() {
@@ -117,6 +125,7 @@ public class DetailActivity extends ActionBarActivity {
                 public void onSuccess(Content content) {
                     int messageResId;
                     if (content == null) {
+                        AppContext.ga().sendHit(GoogleAnalytics.Category.BUTTON, GoogleAnalytics.Action.ADD, GoogleAnalytics.Label.FAVORITES_IN_DETAIL);
                         AppContext.favoriteDao().insert(DetailActivity.this.item);
                         messageResId = R.string.fav_added;
                         if (item != null) {
@@ -124,6 +133,7 @@ public class DetailActivity extends ActionBarActivity {
                         }
                     }
                     else {
+                        AppContext.ga().sendHit(GoogleAnalytics.Category.BUTTON, GoogleAnalytics.Action.REMOVE, GoogleAnalytics.Label.FAVORITES_IN_DETAIL);
                         AppContext.favoriteDao().delete(DetailActivity.this.item.id);
                         messageResId = R.string.fav_removed;
                         if (item != null) {
@@ -148,6 +158,13 @@ public class DetailActivity extends ActionBarActivity {
     private void doShare() {
         if (shareActionProvider != null && item != null) {
             shareActionProvider.setShareIntent(IntentUtil.getShareIntent(item.link));
+            shareActionProvider.setOnShareTargetSelectedListener(new ShareActionProvider.OnShareTargetSelectedListener() {
+                @Override
+                public boolean onShareTargetSelected(ShareActionProvider shareActionProvider, Intent intent) {
+                    AppContext.ga().sendHit(GoogleAnalytics.Category.BUTTON, GoogleAnalytics.Label.SHARE);
+                    return false;
+                }
+            });
         }
     }
 

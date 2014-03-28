@@ -8,8 +8,10 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.text.TextUtils;
 
+import com.m5.android.avicola.app.AppContext;
 import com.m5.android.avicola.app.Constants;
 import com.m5.android.avicola.model.Content;
+import com.m5.android.avicola.tracking.GoogleAnalytics;
 
 public class SettingsActivity extends PreferenceActivity {
 
@@ -44,6 +46,12 @@ public class SettingsActivity extends PreferenceActivity {
                 }
             });
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        AppContext.ga().sendView(GoogleAnalytics.ScreenName.SETTINGS);
     }
 
     protected void exit() {

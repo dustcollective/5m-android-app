@@ -12,9 +12,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.m5.android.avicola.adapters.MainAdapter;
+import com.m5.android.avicola.app.AppContext;
 import com.m5.android.avicola.model.Advert;
 import com.m5.android.avicola.model.AdvertWrapper;
 import com.m5.android.avicola.model.Content;
+import com.m5.android.avicola.tracking.GoogleAnalytics;
 
 import java.util.List;
 
@@ -61,9 +63,11 @@ public class ListFragment extends Fragment {
                 switch (itemHelper.listType) {
                     case TOP_TEASER:
                     case CONTENT:
+                        AppContext.ga().sendHit(GoogleAnalytics.Category.LIST_ITEM, GoogleAnalytics.Label.SHOW_CONTENT);
                         activityInterface.onContentItemSelected((Content)itemHelper.item);
                         break;
                     case AD:
+                        AppContext.ga().sendHit(GoogleAnalytics.Category.LIST_ITEM, GoogleAnalytics.Label.SHOW_AD);
                         activityInterface.onAdvertItemSelected((Advert)itemHelper.item);
                         break;
                 }

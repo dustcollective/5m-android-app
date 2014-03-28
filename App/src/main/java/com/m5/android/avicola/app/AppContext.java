@@ -19,6 +19,7 @@ import com.hanacek.android.utilLib.util.Util;
 import com.m5.android.avicola.app.modConfig.AbstractModConfig;
 import com.m5.android.avicola.db.dao.FavoriteDao;
 import com.m5.android.avicola.file.InternalStorage;
+import com.m5.android.avicola.tracking.GoogleAnalytics;
 import com.m5.android.avicola.util.Cfg;
 
 public class AppContext extends GenericAppContext {
@@ -31,6 +32,7 @@ public class AppContext extends GenericAppContext {
 
     private static FavoriteDao favoriteDao;
     private static AbstractModConfig modConfig;
+    private static GoogleAnalytics ga;
 
     /**
      * application context
@@ -52,12 +54,17 @@ public class AppContext extends GenericAppContext {
         httpAsyncTaskConfiguration = createDefaultHttpAsyncTaskConfigurationBuilder().build();
         imageCache      = new ImageCache(new HttpAsyncTaskConfiguration.Builder().setCache(cache).setUseHeaderExpiresAt(false)
                 .setCachePeriod(Cfg.IMAGE_DEFAULT_CACHE_EXPIRE).build());
+        ga = new GoogleAnalytics(context);
 
         favoriteDao = new FavoriteDao(context);
     }
 
     public static Context context() {
         return context;
+    }
+
+    public static GoogleAnalytics ga() {
+        return ga;
     }
 
     public static AbstractModConfig modConfig() {

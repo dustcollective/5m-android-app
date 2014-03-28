@@ -28,6 +28,7 @@ import com.m5.android.avicola.app.modConfig.AbstractModConfig;
 import com.m5.android.avicola.model.Advert;
 import com.m5.android.avicola.model.Content;
 import com.m5.android.avicola.model.Feed;
+import com.m5.android.avicola.tracking.GoogleAnalytics;
 import com.m5.android.avicola.ui.view.InterstitialView;
 import com.m5.android.avicola.util.Cfg;
 import com.m5.android.avicola.util.IntentUtil;
@@ -137,6 +138,11 @@ public class MainActivity extends ActionBarActivity implements ListFragment.List
         interstitialView = (InterstitialView) findViewById(R.id.interstitial);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        AppContext.ga().sendView(GoogleAnalytics.ScreenName.OVERVIEW);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -184,6 +190,16 @@ public class MainActivity extends ActionBarActivity implements ListFragment.List
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int itemId = item.getItemId();
+        if (itemId == R.id.action_search) {
+            AppContext.ga().sendHit(GoogleAnalytics.Category.BUTTON, GoogleAnalytics.Action.OPEN, GoogleAnalytics.Label.SEARCH);
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch(requestCode) {
             case REQUEST_CODE_SETTINGS:
@@ -226,6 +242,7 @@ public class MainActivity extends ActionBarActivity implements ListFragment.List
     public void onNavigationDrawerItemSelected(NavigationDrawerFragment.DrawerItem drawerItem) {
         switch (drawerItem) {
             case FAVORITES:
+                AppContext.ga().sendHit(GoogleAnalytics.Category.BUTTON, GoogleAnalytics.Label.FAVORITES_IN_DRAWER);
                 new AbstractAsyncTask<List<Content>>() {
                     @Override
                     protected List<Content> extendedDoInBackground() {
@@ -241,15 +258,18 @@ public class MainActivity extends ActionBarActivity implements ListFragment.List
                 }.setShowProgressBar(uiComponentContext).execute();
                 break;
             case SETTINGS:
+                AppContext.ga().sendHit(GoogleAnalytics.Category.BUTTON, GoogleAnalytics.Label.SETTINGS);
                 IntentUtil.startSettingsForResult(this, REQUEST_CODE_SETTINGS);
                 break;
             case HOME:
 
                 break;
             case APPS:
+                AppContext.ga().sendHit(GoogleAnalytics.Category.BUTTON, GoogleAnalytics.Label.APPS);
                 IntentUtil.startWebActivity(this, Cfg.URL_APPS);
                 break;
             case HELP:
+                AppContext.ga().sendHit(GoogleAnalytics.Category.BUTTON, GoogleAnalytics.Label.HELP);
                 if (helpDialog == null) {
                     final AlertDialog.Builder builder = new AlertDialog.Builder(this);
                     builder.setPositiveButton(R.string.help_text_dismiss_button, new DialogInterface.OnClickListener() {
@@ -320,6 +340,18 @@ public class MainActivity extends ActionBarActivity implements ListFragment.List
         @Override
         public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
             currentType = (Content.Type) tab.getTag();
+            switch (currentType) {
+                case EVENT:
+                    AppContext.ga().sendHit(GoogleAnalytics.Category.TAB, GoogleAnalytics.Label.EVENTS);
+                    break;
+                case ALL:
+                    AppContext.ga().sendHit(GoogleAnalytics.Category.TAB, GoogleAnalytics.Label.ALL);
+                    break;
+                case NEWS:
+                    AppContext.ga().sendHit(GoogleAnalytics.Category.TAB, GoogleAnalytics.Label.NEWS);
+                    break;
+            }
+
             showData();
         }
 

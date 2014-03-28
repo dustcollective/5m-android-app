@@ -16,6 +16,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.m5.android.avicola.app.AppContext;
+import com.m5.android.avicola.tracking.GoogleAnalytics;
+
 /**
  * Fragment used for managing interactions for and presentation of a navigation drawer.
  * See the <a href="https://developer.android.com/design/patterns/navigation-drawer.html#Interaction">
@@ -137,6 +140,7 @@ public class NavigationDrawerFragment extends Fragment {
                 }
 
                 getActivity().supportInvalidateOptionsMenu(); // calls onPrepareOptionsMenu()
+                AppContext.ga().sendHit(GoogleAnalytics.Category.BUTTON, GoogleAnalytics.Action.CLOSE, GoogleAnalytics.Label.NAVIGATION_DRAWER);
             }
 
             @Override
@@ -147,6 +151,7 @@ public class NavigationDrawerFragment extends Fragment {
                 }
 
                 getActivity().supportInvalidateOptionsMenu(); // calls onPrepareOptionsMenu()
+                AppContext.ga().sendHit(GoogleAnalytics.Category.BUTTON, GoogleAnalytics.Action.OPEN, GoogleAnalytics.Label.NAVIGATION_DRAWER);
             }
         };
 

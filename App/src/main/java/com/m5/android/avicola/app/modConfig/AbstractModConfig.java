@@ -7,7 +7,7 @@ abstract public class AbstractModConfig implements ModConfigInterface {
     
     public enum Integers {DATABASE_VERSION};
     
-    public enum Strings {DATABASE_NAME, DATABASE_AUTHORITY, SHARED_PREFS, FEED_URL};
+    public enum Strings {DATABASE_NAME, DATABASE_AUTHORITY, SHARED_PREFS, FEED_URL, GOOGLE_ANALYTICS_PROPERTY_ID};
     
     public enum Booleans {};
     
@@ -27,6 +27,9 @@ abstract public class AbstractModConfig implements ModConfigInterface {
         ints = new HashMap<Integers, Integer>();
         longs = new HashMap<Longs, Long>();
         doubles = new HashMap<Doubles, Double>();
+
+        //TODO put proper key, override in particular project if each app is supposed to have its own tracking
+        strings.put(Strings.GOOGLE_ANALYTICS_PROPERTY_ID, "some_default_key");
     }
     
     @Override
