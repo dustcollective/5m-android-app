@@ -67,6 +67,7 @@ public class MainActivity extends ActionBarActivity implements ListFragment.List
 
     private boolean isFavoritesShown;
     private AlertDialog helpDialog;
+    private AlertDialog rateTheAppDialog;
 
     private NavigationDrawerFragment mNavigationDrawerFragment;
     private DrawerLayout drawerLayout;
@@ -136,7 +137,29 @@ public class MainActivity extends ActionBarActivity implements ListFragment.List
         }.setShowProgressBar(uiComponentContext).execute();
 
         interstitialView = (InterstitialView) findViewById(R.id.interstitial);
-    }
+
+        //if (AppContext.prefs().getAppRunCounter() == Cfg.SHOW_RATE_DIALOG_AFTER && !AppContext.prefs().wasRateAppShown()) {
+            AppContext.prefs().setRateAppShown();
+            final AlertDialog.Builder b = new AlertDialog.Builder(this);
+            b.setTitle(R.string.rate_title);
+            b.setMessage(R.string.rate_description);
+            b.setNegativeButton(R.string.rate_negative, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            b.setPositiveButton(R.string.rate_positive, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Log.debug("Rate the app on url: 'market://details?id=" + getPackageName() + "'");
+                    IntentUtil.browser(MainActivity.this, "market://details?id=" + getPackageName());
+                }
+            });
+            rateTheAppDialog = b.create();
+            rateTheAppDialog.show();
+        }
+    //}
 
     @Override
     protected void onStart() {
@@ -308,6 +331,9 @@ public class MainActivity extends ActionBarActivity implements ListFragment.List
         super.onStop();
         if (helpDialog != null) {
             helpDialog.dismiss();
+        }
+        if (rateTheAppDialog != null) {
+            rateTheAppDialog.dismiss();
         }
     }
 

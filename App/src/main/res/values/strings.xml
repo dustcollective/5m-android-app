@@ -41,4 +41,10 @@
     <string name="fav_added">Item was added to the favorites.</string>
     <string name="fav_removed">Item was removed from favorites.</string>
 
+    <!-- Rate the app -->
+    <string name="rate_title">Rate the app</string>
+    <string name="rate_description">If you like our app, please let us know about it.</string>
+    <string name="rate_positive">Sure</string>
+    <string name="rate_negative">No, thanks</string>
+
 </resources>

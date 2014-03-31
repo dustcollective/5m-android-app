@@ -47,6 +47,7 @@ public class AppContext extends GenericAppContext {
         
         //global access objects
         prefs           = new Prefs(context);
+        prefs.incrementAppRunCounter();
         internalStorage = new InternalStorage(context);
         cache           = new Cache(internalStorage, new CacheConfiguration.Builder().build());
         cache.clearExpiredCache();
