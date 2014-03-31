@@ -33,7 +33,13 @@ public class GoogleAnalytics {
 
     public GoogleAnalytics(Context context) {
         this.context = context;
-        com.google.android.gms.analytics.GoogleAnalytics.getInstance(context).setDryRun(true);
+        com.google.android.gms.analytics.GoogleAnalytics.getInstance(context).setDryRun(true); //TODO remove dry run when api key is known
+        setAppOptOut(AppContext.prefs().isGaEnabled());
+    }
+
+    public void setAppOptOut(boolean val) {
+        Log.debug("GA - setOptOut(): " + !val);
+        com.google.android.gms.analytics.GoogleAnalytics.getInstance(context).setAppOptOut(!val);
     }
 
     synchronized Tracker getTracker() {

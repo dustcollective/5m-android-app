@@ -18,6 +18,7 @@ public class SettingsActivity extends PreferenceActivity {
     ListPreference listPreference;
 
     @Override
+    @SuppressWarnings("deprecation")
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.settings);
@@ -34,6 +35,19 @@ public class SettingsActivity extends PreferenceActivity {
         listPreference.setEntries(values);
         listPreference.setEntryValues(values);
         listPreference.setDefaultValue(Content.Territory.ALL.firstValue());
+
+        //opt out
+        final Preference optOut = (Preference) findPreference("pref_key_ga_enabled");
+        if (optOut != null) {
+            optOut.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    AppContext.ga().setAppOptOut((Boolean) newValue);
+                    return true;
+                }
+            });
+        }
+
 
         //save and exit button
         final Preference button = (Preference) findPreference("exit");

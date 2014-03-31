@@ -6,6 +6,13 @@
             android:key="pref_key_territory"
             android:summary="@string/pref_territory_summary"
             android:title="@string/pref_territory_title" />
-        <Preference android:title="@string/pref_exit" android:key="exit"/>
     </PreferenceCategory>
+    <PreferenceCategory
+        android:title="@string/pref_tracking">
+        <CheckBoxPreference
+            android:key="pref_key_ga_enabled"
+            android:defaultValue="true"
+            android:title="@string/pref_enable_ga" />
+    </PreferenceCategory>
+    <Preference android:title="@string/pref_exit" android:key="exit"/>
 </PreferenceScreen>
