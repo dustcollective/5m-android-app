@@ -3,4 +3,7 @@
 
     <string name="app_name">Pig</string>
 
+    <string name="help_text_headline">Tip:</string>
+    <string name="help_text">Welcome to The Pig Site App.  The latest pig news at the tip of your finger.</string>
+
 </resources>

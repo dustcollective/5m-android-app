@@ -3,4 +3,7 @@
 
     <string name="app_name">Fish</string>
 
+    <string name="help_text_headline">Tip:</string>
+    <string name="help_text">Welcome to The Fish Site App.  The latest fish news at the tip of your finger.</string>
+
 </resources>

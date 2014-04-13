@@ -3,4 +3,7 @@
 
     <string name="app_name">Dairy</string>
 
+    <string name="help_text_headline">Tip:</string>
+    <string name="help_text">Welcome to The Dairy Site App.  The latest dairy news at the tip of your finger.</string>
+
 </resources>

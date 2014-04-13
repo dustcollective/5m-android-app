@@ -3,4 +3,7 @@
 
     <string name="app_name">Poultry</string>
 
+    <string name="help_text_headline">Tip:</string>
+    <string name="help_text">Welcome to The Poultry Site App.  The latest poultry news at the tip of your finger.</string>
+
 </resources>

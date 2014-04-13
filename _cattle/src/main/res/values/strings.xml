@@ -3,4 +3,6 @@
 
     <string name="app_name">Cattle</string>
 
+    <string name="help_text_headline">Tip:</string>
+    <string name="help_text">Welcome to The Cattle Site App.  The latest cattle news at the tip of your finger.</string>
 </resources>

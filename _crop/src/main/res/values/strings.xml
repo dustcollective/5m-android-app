@@ -3,4 +3,7 @@
 
     <string name="app_name">Crop</string>
 
+    <string name="help_text_headline">Tip:</string>
+    <string name="help_text">Welcome to The Crop Site App.  The latest crop news at the tip of your finger.</string>
+
 </resources>

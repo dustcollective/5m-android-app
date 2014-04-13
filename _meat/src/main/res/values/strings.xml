@@ -3,4 +3,7 @@
 
     <string name="app_name">Meat</string>
 
+    <string name="help_text_headline">Tip:</string>
+    <string name="help_text">Welcome to The Meat Site App.  The latest meat news at the tip of your finger.</string>
+
 </resources>

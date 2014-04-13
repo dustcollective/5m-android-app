@@ -3,4 +3,7 @@
 
     <string name="app_name">Beef</string>
 
+    <string name="help_text_headline">Tip:</string>
+    <string name="help_text">Welcome to The Beef Site App.  The latest beef news at the tip of your finger.</string>
+
 </resources>

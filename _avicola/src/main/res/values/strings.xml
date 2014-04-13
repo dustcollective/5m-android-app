@@ -2,5 +2,49 @@
 <resources>
 
     <string name="app_name">Avicola</string>
+    <string name="territory_all">Mostrar ayuda</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!-- Info -->
+    <string name="info_no_items">Contenido no disponible</string>
+    <string name="help_text_headline">Consejo:</string>
+    <string name="help_text">Bienvenido a la aplicación de ElSitioAvicola. Las últimas noticias sobre agricultura siempre a mano.</string>
+    <string name="help_text_dismiss_button">Aceptar</string>
+
+    <!-- Errors -->
+    <string name="err_fetch_data">Problema de conexión.</string>
+
+    <!-- Menu -->
+    <string name="action_settings">Ajustes</string>
+    <string name="action_favorites">Favoritos</string>
+    <string name="action_search">Buscar</string>
+    <string name="action_share">Share</string>
+    <string name="action_home">Inicio</string>
+    <string name="action_apps">Nuestras aplicaciones</string>
+    <string name="action_help">Ayuda</string>
+
+    <!-- Tabs -->
+    <string name="tab_all">Inicio</string>
+    <string name="tab_news">Noticias</string>
+    <string name="tab_events">Eventos</string>
+
+    <!-- Settings -->
+    <string name="pref_territory">Select territory</string>
+    <string name="pref_territory_summary">Filter the list by territory</string>
+    <string name="pref_territory_title">Territory name</string>
+    <string name="pref_tracking">Tracking</string>
+    <string name="pref_enable_ga">Enable google analytics</string>
+    <string name="pref_exit">Save and exit</string>
+
+    <!-- Favorites -->
+    <string name="fav_added">Sus eventos favoritos se han sincronizado con el calendario.</string>
+    <string name="fav_removed">Sus eventos favoritos se han sincronizado con el calendario.</string>
+
+    <!-- Rate the app -->
+    <string name="rate_title">Rate the app</string>
+    <string name="rate_description">If you like our app, please let us know about it.</string>
+    <string name="rate_positive">Sure</string>
+    <string name="rate_negative">No, thanks</string>
 
 </resources>
