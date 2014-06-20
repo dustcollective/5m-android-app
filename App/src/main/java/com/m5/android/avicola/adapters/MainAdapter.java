@@ -137,16 +137,17 @@ public class MainAdapter extends BaseAdapter {
 
         public void showData(ListItemInterface item) {
             final String imageUrl = item.getImageUrl();
+            final Point size = getImageSize();
+            if (size != null) {
+                image.presetDimensions(size.x, size.y);
+            }
             if (TextUtils.isEmpty(imageUrl)) {
-                image.setVisibility(View.GONE);
-                image.setImageBitmap(null);
+                image.setBackgroundColor(AppContext.context().getResources().getColor(android.R.color.transparent));
+                final int imgRes = (item.getType() == Content.Type.NEWS) ? R.drawable.news_calendar : R.drawable.event_calendar ;
+                image.setImageResource(imgRes);
             }
             else {
-                image.setVisibility(View.VISIBLE);
-                final Point size = getImageSize();
-                if (size != null) {
-                    image.presetDimensions(size.x, size.y);
-                }
+                image.setBackgroundColor(AppContext.context().getResources().getColor(android.R.color.black));
                 AppContext.imageCache().displayImage(item.getImageUrl(), image);
             }
         }

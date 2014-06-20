@@ -20,4 +20,9 @@ public class Advert implements ListItemInterface {
     public String getTeaser() {
         return null;
     }
+
+    @Override
+    public Content.Type getType() {
+        return null;
+    }
 }

@@ -6,11 +6,13 @@ import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.ShareActionProvider;
 import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hanacek.android.utilLib.calendar.CalendarUtils;
 import com.hanacek.android.utilLib.tasks.AbstractAsyncTask;
 import com.hanacek.android.utilLib.ui.view.PresetSizeImageView;
 import com.hanacek.android.utilLib.util.Log;
@@ -21,6 +23,9 @@ import com.m5.android.avicola.model.Content;
 import com.m5.android.avicola.tracking.GoogleAnalytics;
 import com.m5.android.avicola.util.Cfg;
 import com.m5.android.avicola.util.IntentUtil;
+
+import java.util.Calendar;
+import java.util.TimeZone;
 
 public class DetailActivity extends ActionBarActivity {
 
@@ -37,7 +42,11 @@ public class DetailActivity extends ActionBarActivity {
         item = Content.fromBundle(getIntent().getBundleExtra(Constants.EXTRAS_CONTENT));
 
         ((TextView)findViewById(R.id.headline)).setText(Html.fromHtml(item.headline));
-        ((TextView)findViewById(R.id.body)).setText(Html.fromHtml(item.body));
+
+        final TextView body = (TextView) findViewById(R.id.body);
+        body.setText(Html.fromHtml(item.body));
+        body.setMovementMethod(LinkMovementMethod.getInstance());
+
         imageView = ((PresetSizeImageView)findViewById(R.id.image));
         imageView.presetDimensions(AppContext.getDisplayWidth(), (int)(Cfg.IMAGE_HEIGHT_RATIO*AppContext.getDisplayWidth()));
         imageView.setBackgroundColor(getResources().getColor(android.R.color.transparent));
@@ -73,7 +82,7 @@ public class DetailActivity extends ActionBarActivity {
 
     private void showStandard() {
         if (item.getImageUrl() == null) {
-            //TODO whatever is needed.
+            imageView.setImageResource(R.drawable.news_calendar);
         }
         else {
             AppContext.imageCache().displayImage(item.getImageUrl(), imageView);
@@ -123,10 +132,19 @@ public class DetailActivity extends ActionBarActivity {
 
                 @Override
                 public void onSuccess(Content content) {
+                    final Content c = DetailActivity.this.item;
                     int messageResId;
                     if (content == null) {
                         AppContext.ga().sendHit(GoogleAnalytics.Category.BUTTON, GoogleAnalytics.Action.ADD, GoogleAnalytics.Label.FAVORITES_IN_DETAIL);
-                        AppContext.favoriteDao().insert(DetailActivity.this.item);
+                        if (c.getType() == Content.Type.EVENT) {
+                            final Calendar cb = Calendar.getInstance();
+                            cb.setTimeInMillis(c.start*1000);
+                            final Calendar ce = Calendar.getInstance();
+                            ce.setTimeInMillis(c.end*1000);
+                            c.calendarId = CalendarUtils.addEvent(DetailActivity.this, cb, ce, c.getHeadline(), c.getTeaser(),
+                                    TimeZone.getDefault().getDisplayName(), c.location);
+                        }
+                        AppContext.favoriteDao().insert(c);
                         messageResId = R.string.fav_added;
                         if (item != null) {
                             item.setIcon(R.drawable.ic_action_favorite_selected);
@@ -134,7 +152,11 @@ public class DetailActivity extends ActionBarActivity {
                     }
                     else {
                         AppContext.ga().sendHit(GoogleAnalytics.Category.BUTTON, GoogleAnalytics.Action.REMOVE, GoogleAnalytics.Label.FAVORITES_IN_DETAIL);
-                        AppContext.favoriteDao().delete(DetailActivity.this.item.id);
+                        if (c.calendarId != -1) {
+                            CalendarUtils.removeEvent(DetailActivity.this, c.calendarId);
+                        }
+
+                        AppContext.favoriteDao().delete(c.id);
                         messageResId = R.string.fav_removed;
                         if (item != null) {
                             item.setIcon(R.drawable.ic_action_favorite);

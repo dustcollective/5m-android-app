@@ -11,7 +11,8 @@ public class ModConfig extends AbstractModConfig {
         strings.put(Strings.DATABASE_NAME, "com.benchmark.fivem.elSitioAvicola");
         strings.put(Strings.SHARED_PREFS, "avicola_prefs");
         strings.put(Strings.FEED_URL, "http://avicola.ios-app-feed.5m-app.dust.screenformat.com/");
-        
+        strings.put(Strings.GOOGLE_ANALYTICS_PROPERTY_ID, "UA-49810562-2");
+
         ints.put(Integers.DATABASE_VERSION, 1);
     }
 }

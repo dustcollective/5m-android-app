@@ -35,7 +35,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FavoriteTable.CN_TYPE + " TEXT, " +
     			FavoriteTable.CN_START + " INTEGER, " +
                 FavoriteTable.CN_END + " INTEGER, " +
-                FavoriteTable.CN_DATE + " INTEGER" +
+                FavoriteTable.CN_DATE + " INTEGER, " +
+                FavoriteTable.CN_CALENDAR_ID + " INTEGER" +
 				")";
 
     	db.execSQL(sql);

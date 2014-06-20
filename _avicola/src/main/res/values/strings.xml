@@ -30,21 +30,21 @@
     <string name="tab_events">Eventos</string>
 
     <!-- Settings -->
-    <string name="pref_territory">Select territory</string>
-    <string name="pref_territory_summary">Filter the list by territory</string>
-    <string name="pref_territory_title">Territory name</string>
+    <string name="pref_territory">Seleccione un territorio</string>
+    <string name="pref_territory_summary">Filtrar la lista por territorio</string>
+    <string name="pref_territory_title">Nombre del territorio</string>
     <string name="pref_tracking">Tracking</string>
-    <string name="pref_enable_ga">Enable google analytics</string>
-    <string name="pref_exit">Save and exit</string>
+    <string name="pref_enable_ga">Habilitar Google Analytic</string>
+    <string name="pref_exit">Guardar y salir</string>
 
     <!-- Favorites -->
-    <string name="fav_added">Sus eventos favoritos se han sincronizado con el calendario.</string>
-    <string name="fav_removed">Sus eventos favoritos se han sincronizado con el calendario.</string>
+    <string name="fav_added">Se añadió a Favoritos.</string>
+    <string name="fav_removed">Se eliminó de Favoritos.</string>
 
     <!-- Rate the app -->
-    <string name="rate_title">Rate the app</string>
-    <string name="rate_description">If you like our app, please let us know about it.</string>
-    <string name="rate_positive">Sure</string>
-    <string name="rate_negative">No, thanks</string>
+    <string name="rate_title">Valore la aplicación</string>
+    <string name="rate_description">Si le gusta nuestra aplicación, por favor, cuéntenoslo.</string>
+    <string name="rate_positive">Claro</string>
+    <string name="rate_negative">No, gracias</string>
 
 </resources>

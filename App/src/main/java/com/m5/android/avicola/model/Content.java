@@ -73,6 +73,7 @@ public class Content implements ListItemInterface, Parcelable {
     public Category[] categories;
     public String location;
     public String eventId;
+    public long calendarId = -1;
 
     public Content(){}
 
@@ -136,6 +137,11 @@ public class Content implements ListItemInterface, Parcelable {
     @Override
     public String getTeaser() {
         return getFormattedDate();
+    }
+
+    @Override
+    public Type getType() {
+        return type;
     }
 
     public String getFormattedDate() {

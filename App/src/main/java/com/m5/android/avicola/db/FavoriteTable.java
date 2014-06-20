@@ -35,10 +35,11 @@ public class FavoriteTable {
     public static final String CN_END = "ce";
     public static final String CN_CONTACT_EMAIL = "cce";
     public static final String CN_CONTACT_NAME = "ccn";
+    public static final String CN_CALENDAR_ID = "calId";
 
     public static final String[] SELECT_ALL_PROJECTION = new String[]{
             CN_BODY, CN_CONTACT_EMAIL, CN_CONTACT_NAME, CN_COUNTRY, CN_DATE, CN_END, CN_EVENT_ID, CN_HEADLINE, CN_ID, CN_LINK, CN_LOCATION, CN_NEWS_ID,
-            CN_SNIPPET, CN_START, CN_TERRITORY, CN_THUMBNAIL, CN_TYPE, CN_LOCAL_UID
+            CN_SNIPPET, CN_START, CN_TERRITORY, CN_THUMBNAIL, CN_TYPE, CN_LOCAL_UID, CN_CALENDAR_ID
     };
 
     public static final String DEFAULT_SORT_ORDER = CN_ID + " ASC";
@@ -63,6 +64,7 @@ public class FavoriteTable {
         values.put(CN_NEWS_ID, item.newsId);
         values.put(CN_SNIPPET, item.snippet);
         values.put(CN_START, item.start);
+        values.put(CN_CALENDAR_ID, item.calendarId);
 
         if (item.territory != null) {
             values.put(CN_TERRITORY, item.territory.name());
@@ -80,6 +82,10 @@ public class FavoriteTable {
 
         if (c.getColumnIndex(FavoriteTable.CN_LOCAL_UID) != -1) {
             content.localUid = c.getLong(c.getColumnIndex(FavoriteTable.CN_LOCAL_UID));
+        }
+
+        if (c.getColumnIndex(FavoriteTable.CN_CALENDAR_ID) != -1) {
+            content.calendarId = c.getLong(c.getColumnIndex(FavoriteTable.CN_CALENDAR_ID));
         }
 
         if (c.getColumnIndex(FavoriteTable.CN_TYPE) != -1) {

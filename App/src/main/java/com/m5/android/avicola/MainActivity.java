@@ -138,7 +138,7 @@ public class MainActivity extends ActionBarActivity implements ListFragment.List
 
         interstitialView = (InterstitialView) findViewById(R.id.interstitial);
 
-        //if (AppContext.prefs().getAppRunCounter() == Cfg.SHOW_RATE_DIALOG_AFTER && !AppContext.prefs().wasRateAppShown()) {
+        if (AppContext.prefs().getAppRunCounter() == Cfg.SHOW_RATE_DIALOG_AFTER && !AppContext.prefs().wasRateAppShown()) {
             AppContext.prefs().setRateAppShown();
             final AlertDialog.Builder b = new AlertDialog.Builder(this);
             b.setTitle(R.string.rate_title);
@@ -159,7 +159,7 @@ public class MainActivity extends ActionBarActivity implements ListFragment.List
             rateTheAppDialog = b.create();
             rateTheAppDialog.show();
         }
-    //}
+    }
 
     @Override
     protected void onStart() {

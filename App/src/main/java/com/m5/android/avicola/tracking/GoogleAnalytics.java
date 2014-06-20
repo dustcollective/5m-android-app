@@ -33,7 +33,7 @@ public class GoogleAnalytics {
 
     public GoogleAnalytics(Context context) {
         this.context = context;
-        com.google.android.gms.analytics.GoogleAnalytics.getInstance(context).setDryRun(true); //TODO remove dry run when api key is known
+        //com.google.android.gms.analytics.GoogleAnalytics.getInstance(context).setDryRun(true);
         setAppOptOut(AppContext.prefs().isGaEnabled());
     }
 

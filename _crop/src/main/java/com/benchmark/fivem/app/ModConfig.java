@@ -11,7 +11,8 @@ public class ModConfig extends AbstractModConfig {
         strings.put(Strings.DATABASE_NAME, "com.benchmark.fivem");
         strings.put(Strings.SHARED_PREFS, "crop_prefs");
         strings.put(Strings.FEED_URL, "http://crop.ios-app-feed.5m-app.dust.screenformat.com/");
-        
+        strings.put(Strings.GOOGLE_ANALYTICS_PROPERTY_ID, "UA-49810562-4");
+
         ints.put(Integers.DATABASE_VERSION, 1);
     }
 }

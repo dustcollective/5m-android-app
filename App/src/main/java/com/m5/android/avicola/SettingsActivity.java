@@ -37,7 +37,7 @@ public class SettingsActivity extends PreferenceActivity {
         listPreference.setDefaultValue(Content.Territory.ALL.firstValue());
 
         //opt out
-        final Preference optOut = (Preference) findPreference("pref_key_ga_enabled");
+        final Preference optOut = findPreference("pref_key_ga_enabled");
         if (optOut != null) {
             optOut.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
@@ -50,7 +50,7 @@ public class SettingsActivity extends PreferenceActivity {
 
 
         //save and exit button
-        final Preference button = (Preference) findPreference("exit");
+        final Preference button = findPreference("exit");
         if (button != null) {
             button.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
